@@ -1,5 +1,4 @@
 resource_name :swisnap_plugin
-property :name, String, name_property: true, required: true
 property :config_source, String, default: lazy { "#{node['swisnap']['plugin_config_dir']}/#{name}.yaml.example" }
 
 action :load do
@@ -22,7 +21,7 @@ action_class.class_eval do
       content ::File.open(new_resource.config_source).read
       owner 'solarwinds'
       group 'solarwinds'
-      mode 0644
+      mode '644'
       action :create
       notifies :restart, 'service[swisnapd]', :immediately
     end

@@ -1,0 +1,22 @@
+language: ruby
+rvm:
+  - 2.6.3
+
+addons:
+  apt:
+    sources:
+      - chef-current-xenial
+    packages:
+      - chef-workstation
+
+before_script:
+  - eval "$(chef shell-init bash)"
+  - chef --version
+
+script: echo './test.sh' # TODO JIRA: AO-15194
+
+jobs:
+  include:
+    - stage: test
+      env:
+        - CHEF_LICENSE=accept
