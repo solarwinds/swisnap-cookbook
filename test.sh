@@ -31,13 +31,13 @@ setup_geminabox() {
     (
         cd geminabox
 
-        cat > config.ru << EOF
-require "rubygems"
-require "geminabox"
+        cat > config.ru <<- EOF
+            require "rubygems"
+            require "geminabox"
 
-Geminabox.data = "./data"
-Geminabox.rubygems_proxy = true
-run Geminabox::Server
+            Geminabox.data = "./data"
+            Geminabox.rubygems_proxy = true
+            run Geminabox::Server
 EOF
 
         RUBYGEMS_PROXY=true rackup --port 9292 &

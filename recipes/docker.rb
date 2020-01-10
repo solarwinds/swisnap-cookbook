@@ -1,5 +1,5 @@
 swisnap_install 'Install SolarWinds Snap Agent' do
-  appoptics_token 'mytoken'
+  appoptics_token 'MY_APPOPTICS_TOKEN'
   action :install
 end
 
