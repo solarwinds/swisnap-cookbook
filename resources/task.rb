@@ -36,9 +36,8 @@ action :remove do
 end
 
 action_class.class_eval do
-  require 'ruby_snap'
-
   def tasks_client
+    require 'ruby_snap'
     RubySnap::TasksClient.new
   end
 

@@ -1,9 +1,8 @@
 name 'swisnap'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Dawid Smiech'
+maintainer_email 'dawid.smiech@solarwinds.com'
 license 'All Rights Reserved'
 description 'Installs/Configures swisnap'
-long_description 'Installs/Configures swisnap'
 version '0.1.0'
-chef_version '>= 12.14' if respond_to?(:chef_version)
+chef_version '>= 12.14'
 depends 'packagecloud'
