@@ -1,5 +1,5 @@
 resource_name :swisnap_install
-property :appoptics_token, String, required: true
+property :solarwinds_token, String, required: true
 
 action :install do
   node.run_state['package_type'] = if %w(ubuntu debian).include? node['platform']
@@ -13,6 +13,7 @@ action :install do
   end
 
   package 'solarwinds-snap-agent' do
+    ENV['SOLARWINDS_TOKEN'] = new_resource.solarwinds_token
     action :install
   end
 
@@ -20,11 +21,11 @@ action :install do
     source 'config.yaml.erb'
     owner 'solarwinds'
     group 'solarwinds'
-    variables(appoptics_token: new_resource.appoptics_token)
+    mode '0640'
   end
 
   service 'swisnapd' do
-    action [:enable, :start]
+    action [:enable, :restart]
   end
 end
 
