@@ -1,4 +1,4 @@
-resource_name :swisnap_install
+resource_name :swisnap_install_linux
 property :solarwinds_token, String, required: true
 
 action :install do
@@ -8,7 +8,7 @@ action :install do
                                      'rpm'
                                    end
 
-  packagecloud_repo 'solarwinds/swisnap-stg' do
+  packagecloud_repo 'solarwinds/swisnap' do
     type lazy { node.run_state['package_type'] }
   end
 
@@ -22,10 +22,11 @@ action :install do
     owner 'solarwinds'
     group 'solarwinds'
     mode '0640'
+    notifies :restart, 'service[swisnapd]', :immediately
   end
 
   service 'swisnapd' do
-    action [:enable, :restart]
+    action :enable
   end
 end
 

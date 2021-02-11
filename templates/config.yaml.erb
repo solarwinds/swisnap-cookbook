@@ -6,9 +6,9 @@ log_format: <%= node['swisnap']['swisnap_log_format'] %>
 <%- end -%>
 
 control:
-  auto_discover_path: <%= node['swisnap']['swisnap_auto_discover_path'] %>  
+  auto_discover_path: <%= node['swisnap']['swisnap_auto_discover_path'] %>
   tasks_autoload_path: <%= node['swisnap']['swisnap_tasks_autoload_path'] %>
-  plugin_path: <%= node['swisnap']['swisnap_plugin_path'] %> 
+  plugin_path: <%= node['swisnap']['swisnap_plugin_path'] %>
   task_path: <%= node['swisnap']['swisnap_task_path'] %>
 
   <%- if defined?(node['swisnap']['swisnap_plugin_trust_level']) && ! node['swisnap']['swisnap_plugin_trust_level'].empty? -%>
@@ -42,22 +42,22 @@ control:
   <%- end -%>
 
 restapi:
-  enable: <%= node['swisnap']['swisnap_restapi_enable'] %> 
-  <%- if defined?(node['swisnap']['swisnap_restapi_addr']) && ! node['swisnap']['swisnap_restapi_addr'].empty? -%> 
+  enable: <%= node['swisnap']['swisnap_restapi_enable'] %>
+  <%- if defined?(node['swisnap']['swisnap_restapi_addr']) && ! node['swisnap']['swisnap_restapi_addr'].empty? -%>
   addr: <%= node['swisnap']['swisnap_restapi_addr'] %>
   <%- end -%>
-  <%- if defined?(node['swisnap']['swisnap_restapi_rest_auth']) && ! node['swisnap']['swisnap_restapi_rest_auth'].empty? -%> 
-  rest_auth: <%= node['swisnap']['swisnap_restapi_rest_auth'] %> 
+  <%- if defined?(node['swisnap']['swisnap_restapi_rest_auth']) && ! node['swisnap']['swisnap_restapi_rest_auth'].empty? -%>
+  rest_auth: <%= node['swisnap']['swisnap_restapi_rest_auth'] %>
   <%- end -%>
-  <%- if defined?(node['swisnap']['swisnap_restapi_rest_auth_password']) && ! node['swisnap']['swisnap_restapi_rest_auth_password'].empty? -%> 
-  rest_auth_password: <%= node['swisnap']['swisnap_restapi_rest_auth_password'] %> 
+  <%- if defined?(node['swisnap']['swisnap_restapi_rest_auth_password']) && ! node['swisnap']['swisnap_restapi_rest_auth_password'].empty? -%>
+  rest_auth_password: <%= node['swisnap']['swisnap_restapi_rest_auth_password'] %>
   <%- end -%>
-  <%- if defined?(node['swisnap']['swisnap_restapi_rest_certificate']) && ! node['swisnap']['swisnap_restapi_rest_certificate'].empty? -%> 
-  rest_certificate: <%= node['swisnap']['swisnap_restapi_rest_certificate'] %> 
+  <%- if defined?(node['swisnap']['swisnap_restapi_rest_certificate']) && ! node['swisnap']['swisnap_restapi_rest_certificate'].empty? -%>
+  rest_certificate: <%= node['swisnap']['swisnap_restapi_rest_certificate'] %>
   <%- end -%>
-  <%- if defined?(node['swisnap']['swisnap_restapi_rest_key']) && ! node['swisnap']['swisnap_restapi_rest_key'].empty? -%> 
-  rest_key: <%= node['swisnap']['swisnap_restapi_rest_key'] %> 
+  <%- if defined?(node['swisnap']['swisnap_restapi_rest_key']) && ! node['swisnap']['swisnap_restapi_rest_key'].empty? -%>
+  rest_key: <%= node['swisnap']['swisnap_restapi_rest_key'] %>
   <%- end -%>
-  <%- if defined?(node['swisnap']['swisnap_restapi_plugin_load_timeout']) && ! node['swisnap']['swisnap_restapi_plugin_load_timeout'].empty? -%> 
-  plugin_load_timeout: <%= node['swisnap']['swisnap_restapi_plugin_load_timeout'] %> 
+  <%- if defined?(node['swisnap']['swisnap_restapi_plugin_load_timeout']) && ! node['swisnap']['swisnap_restapi_plugin_load_timeout'].empty? -%>
+  plugin_load_timeout: <%= node['swisnap']['swisnap_restapi_plugin_load_timeout'] %>
   <%- end -%>
