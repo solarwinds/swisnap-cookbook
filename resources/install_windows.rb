@@ -1,4 +1,5 @@
 resource_name :swisnap_install_windows
+provides :swisnap_install_windows
 property :solarwinds_token, String, required: true
 
 action :install do

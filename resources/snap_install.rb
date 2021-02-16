@@ -1,4 +1,5 @@
-resource_name :snapinstall
+resource_name :swisnap_install
+provides :swisnap_install
 property :solarwinds_token, String, required: true
 
 action :install do
