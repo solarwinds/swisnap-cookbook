@@ -5,9 +5,12 @@ default['swisnap']['swisnap_log_level'] = 'warning'
 default['swisnap']['swisnap_log_format'] = ''
 
 ## Plugin trust level for swisnapd. 
-## When enabled, only signed plugins that can be verified will be loaded into swisnapd. 
-## Signatures are verified from keyring files specified in swisnap_keyring_path. 
+## When enabled, only signed plugins that can be verified will be loaded into swisnapd.
+## Signatures are verified from keyring files specified in swisnap_keyring_path.
 ## Valid values are 0 - Off, 1 - Enabled, 2 - Warning.
+##
+## Default value is 1 - Enabled.
+## If plugin_trust_level is not set, then agent will use default enabled level.
 default['swisnap']['swisnap_plugin_trust_level'] = ''
 default['swisnap']['swisnap_keyring_paths'] = ''
 
@@ -21,8 +24,8 @@ default['swisnap']['swisnap_ca_cert_paths'] = ''
 ## The maximal time allowed for a plugin to load. Default value is 30.
 default['swisnap']['swisnap_plugin_load_timeout'] = ''
 
-## Tags that will be applied to collected metrics across tasks.
-default['swisnap']['swisnap_global_tags'] =  {}
+## Tags that will be applied to collected metrics across all tasks. They should be set in Hash (key => value) format.
+default['swisnap']['swisnap_global_tags'] = {}
 
 ## Optional REST API parameters. By default REST API is enabled.
 default['swisnap']['swisnap_restapi_enable'] = true
@@ -55,7 +58,7 @@ if node['os'] == 'windows'
   default['swisnap']['swisnap_tasks_autoload_path'] = 'C:\ProgramData\SolarWinds\Snap\tasks-autoload.d'
 
 else
-  ## Linux specific values 
+  ## Linux specific values
 
   ## Path to SolarWinds Snap Agent's autoload directory for V1 plugins.
   default['swisnap']['swisnap_auto_discover_path'] = '/opt/SolarWinds/Snap/autoload'

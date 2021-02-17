@@ -41,7 +41,7 @@ Logging level and log format. Default value is `warning` and `text`.
 ['swisnap']['swisnap_plugin_trust_level']
 ['swisnap']['swisnap_keyring_paths']
 ```
-Plugin trust level for swisnapd. When enabled, only signed plugins that can be verified will be loaded into swisnapd. Signatures are verified from keyring files specified in `swisnap_keyring_path`. Valid values are 0 - Off, 1 - Enabled, 2 - Warning.
+Plugin trust level for swisnapd. When enabled, only signed plugins that can be verified will be loaded into swisnapd. Signatures are verified from keyring files specified in `swisnap_keyring_path`. Valid values are 0 - Off, 1 - Enabled, 2 - Warning. Default value is 1 - Enabled. If this is not set, then agent will use default enabled level.
 
 ```
 ['swisnap']['swisnap_tls_cert_path']
@@ -58,7 +58,7 @@ The maximal time allowed for a plugin to load. Default value is 30.
 ```
 ['swisnap']['swisnap_global_tags']
 ```
-Tags that will be applied to collected metrics across tasks.
+Tags that will be applied to collected metrics across all tasks. They should be set as Hash (key => value) format.
 ```
 ['swisnap']['swisnap_restapi_enable']
 ['swisnap']['swisnap_restapi_rest_auth']
