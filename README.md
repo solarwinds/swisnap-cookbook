@@ -12,7 +12,7 @@ Chef recipes and resources for SolarWinds Snap Agent Linux and Windows installat
 git clone git@github.com:librato/swisnap-cookbook.git swisnap
 ```
 
-* Download recipe dependencied (SolarWinds Snap Agent has dependency to PackageCloud Chef recipes).
+* Download recipe dependencies (SolarWinds Snap Agent has dependency to PackageCloud Chef recipes).
 
 * Update SOLARWINDS_TOKEN, with your App-Opptics API token in [recipes/default.rb](recipes/default.rb).
 
