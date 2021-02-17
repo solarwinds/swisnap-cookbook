@@ -7,21 +7,26 @@ Chef recipes and resources for SolarWinds Snap Agent Linux and Windows installat
 
 ## Usage
 
-As these recipes are not yet published to Chef Supermarket, clone this repoitory in to `swisnap` directory.
-```git clone git@github.com:librato/swisnap-cookbook.git swisnap```
+* As these recipes are not yet published to Chef Supermarket, clone this repoitory in to `swisnap` directory.
+```
+git clone git@github.com:librato/swisnap-cookbook.git swisnap
+```
 
-Download recipe dependencied (SolarWinds Snap Agent has dependency to PackageCloud Chef recipes).
+* Download recipe dependencied (SolarWinds Snap Agent has dependency to PackageCloud Chef recipes).
 
+* Update SOLARWINDS_TOKEN, with your App-Opptics API token in [recipes/default.rb](recipes/default.rb).
 
-Update SOLARWINDS_TOKEN, with your App-Opptics API token in [recipes/default.rb](recipes/default.rb).
+* Send to Chef Server up-to-date version of recipes and its dependencies.
+```
+knife cookbook upload swisnap --include-dependencies
+```
 
-Send to Chef Server up-to-date version of recipes and its dependencies.
-```knife cookbook upload swisnap --include-dependencies```
+* Add to run list for desired nodes:
+```
+recipe[swisnap::default]
+```
 
-Add to run list for desired nodes:
-`recipe[swisnap::default]`
-
-Run `chef-infra`, on Chef nodes by manual trigger, or by using another recipe for scheduling `chef-`infra` triggers.
+* Run `chef-infra`, on Chef nodes by manual trigger, or by using another recipe for scheduled triggers if enabled.
 
 ## Attributes
 
