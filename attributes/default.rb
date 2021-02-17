@@ -1,20 +1,7 @@
 default['swisnap']['swisnap_package_name'] = 'solarwinds-snap-agent'
-default['swisnap']['swisnap_log_level'] = 'info'
+
+default['swisnap']['swisnap_log_level'] = 'warning'
 default['swisnap']['swisnap_log_format'] = ''
-default['swisnap']['swisnap_log_path'] = '/var/log/SolarWinds/Snap'
-default['swisnap']['swisnap_temp_dir_path'] = '/tmp/SolarWinds/Snap'
-default['swisnap']['swisnap_temp_dir_enable'] = 'false'
-default['swisnap']['swisnap_plugin_path'] = '/opt/SolarWinds/Snap/bin'
-default['swisnap']['swisnap_task_path'] = '/opt/SolarWinds/Snap/etc/tasks.d'
-default['swisnap']['swisnap_plugin_config_dir'] = '/opt/SolarWinds/Snap/etc/plugins.d'
-
-default['swisnap']['swisnap_auto_discover_path'] = '/opt/SolarWinds/Snap/autoload'
-default['swisnap']['swisnap_tasks_autoload_path'] = '/opt/SolarWinds/Snap/etc/tasks-autoload.d'
-default['swisnap']['swisnap_plugin_path'] = '/opt/solarWinds/Snap/bin'
-default['swisnap']['swisnap_task_path'] = '/opt/solarWinds/Snap/etc/tasks.d'
-
-
-default['swisnap']['swisnap_log_format'] = 'text'
 default['swisnap']['swisnap_plugin_trust_level'] = ''
 default['swisnap']['swisnap_keyring_paths'] = ''
 default['swisnap']['swisnap_tls_cert_path'] = ''
@@ -32,13 +19,20 @@ default['swisnap']['swisnap_restapi_rest_key'] = ''
 default['swisnap']['swisnap_restapi_addr'] = ''
 default['swisnap']['swisnap_restapi_plugin_load_timeout'] = ''
 
-default['swisnap']['publisher_appoptics_url'] = ''
-default['swisnap']['publisher_processes_url'] = ''
-default['swisnap']['swisnap_proxy_url'] = ''
-default['swisnap']['swisnap_proxy_user'] = ''
-default['swisnap']['swisnap_proxy_password'] = ''
-default['swisnap']['swisnap_host_check_timeout'] = ''
-default['swisnap']['swisnap_ec2_check_timeout'] = ''
-default['swisnap']['swisnap_ec2_check_retries'] = ''
-default['swisnap']['swisnap_floor_seconds'] = ''
-default['swisnap']['swisnap_period'] = ''
+if node['os'] == 'windows'
+  # Windows defaults
+  default['swisnap']['swisnap_auto_discover_path'] = 'C:\Program Files\SolarWinds\Snap\autoload; C:\ProgramData\SolarWinds\Snap\autoload'
+  default['swisnap']['swisnap_log_path'] = 'C:\ProgramData\SolarWinds\Snap\log'
+  default['swisnap']['swisnap_plugin_config_dir'] = 'C:\ProgramData\SolarWinds\Snap\plugins.d'
+  default['swisnap']['swisnap_plugin_path'] = 'C:\Program Files\SolarWinds\Snap\bin'
+  default['swisnap']['swisnap_tasks_autoload_path'] = 'C:\ProgramData\SolarWinds\Snap\tasks-autoload.d'
+  default['swisnap']['swisnap_task_path'] = 'C:\ProgramData\SolarWinds\Snap\tasks.d'
+else
+  # Linux defaults
+  default['swisnap']['swisnap_auto_discover_path'] = '/opt/SolarWinds/Snap/autoload'
+  default['swisnap']['swisnap_log_path'] = '/var/log/SolarWinds/Snap'
+  default['swisnap']['swisnap_plugin_path'] = '/opt/SolarWinds/Snap/bin'
+  default['swisnap']['swisnap_plugin_config_dir'] = '/opt/SolarWinds/Snap/etc/plugins.d'
+  default['swisnap']['swisnap_task_path'] = '/opt/SolarWinds/Snap/etc/tasks.d'
+  default['swisnap']['swisnap_tasks_autoload_path'] = '/opt/SolarWinds/Snap/etc/tasks-autoload.d'
+end
