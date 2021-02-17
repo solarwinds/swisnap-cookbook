@@ -7,7 +7,7 @@ action :install do
   windows_package 'solarwinds-snap-agent' do
     action :install
     installer_type :msi
-    source 'http://files.solarwinds.cloud/windows-solarwinds-snap-agent/solarwinds-snap-agent.msi' 
+    source 'https://files.solarwinds.cloud/windows-solarwinds-snap-agent/solarwinds-snap-agent.msi' 
     options "TOKEN=#{new_resource.solarwinds_token} EULA=accept"
   end
 
