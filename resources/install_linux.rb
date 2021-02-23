@@ -22,7 +22,25 @@ action :install do
     owner 'solarwinds'
     group 'solarwinds'
     mode '0640'
-    notifies :restart, 'service[swisnapd]', :immediately
+    notifies :restart, 'service[swisnapd]', :delayed
+  end
+  
+  template '/opt/SolarWinds/Snap/etc/plugins.d/publisher-appoptics.yaml' do
+    source 'publisher-appoptics.yaml.erb'
+    owner 'solarwinds'
+    group 'solarwinds'
+    mode '0640'
+    variables(solarwinds_token: new_resource.solarwinds_token)
+    notifies :restart, 'service[swisnapd]', :delayed
+  end
+
+  template '/opt/SolarWinds/Snap/etc/plugins.d/publisher-processes.yaml' do
+    source 'publisher-processes.yaml.erb'
+    owner 'solarwinds'
+    group 'solarwinds'
+    mode '0640'
+    variables(solarwinds_token: new_resource.solarwinds_token)
+    notifies :restart, 'service[swisnapd]', :delayed
   end
 
   service 'swisnapd' do

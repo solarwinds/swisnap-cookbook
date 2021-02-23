@@ -7,7 +7,7 @@ Chef recipes and resources for SolarWinds Snap Agent Linux and Windows installat
 
 ## Usage
 
-* As these recipes are not yet published to Chef Supermarket, clone this repoitory in to `swisnap` directory.
+* As these recipes are not yet published to Chef Supermarket, clone this repository in to `swisnap` directory.
 ```
 git clone git@github.com:librato/swisnap-cookbook.git swisnap
 ```

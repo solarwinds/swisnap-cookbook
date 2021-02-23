@@ -3,10 +3,10 @@ v2:
     publisher-processes:
       all:
         endpoint:
-          token: <%= @solarwinds_token %> 
+          token: "<%= @solarwinds_token %>"
 
           ## URL to the AppOptics REST API endpoint for collecting processes data
-          # url: APPOPTICS_REPORT_URL
+          # url: "https://api.appoptics.com/v1/agent/report"
 
           ## Enable support for HTTP(S) proxy.
           # proxy_url: "http://<proxy-server-ip>:<port>"
@@ -22,8 +22,8 @@ v2:
           <%- if defined?(node['swisnap']['swisnap_proxy_user']) && ! node['swisnap']['swisnap_proxy_user'].empty? -%>
           proxy_user: <%= node['swisnap']['swisnap_proxy_user'] %>
           <%- end -%>
-          <%- if defined?(node['swisnap']['swisnap_proxy_url']) && ! node['swisnap']['swisnap_proxy_url'].empty? -%>
-          proxy_url: <%= node['swisnap']['swisnap_proxy_url'] %>
+          <%- if defined?(node['swisnap']['swisnap_proxy_password']) && ! node['swisnap']['swisnap_proxy_password'].empty? -%>
+          proxy_password: <%= node['swisnap']['swisnap_proxy_password'] %>
           <%- end -%>
 
         options:
@@ -66,4 +66,3 @@ v2:
             <%- if defined?(node['swisnap']['swisnap_ec2_check_retries']) && ! node['swisnap']['swisnap_ec2_check_retries'].empty? -%>
             ec2_check_retries: <%= node['swisnap']['swisnap_ec2_check_retries'] %>
             <%- end -%>
-

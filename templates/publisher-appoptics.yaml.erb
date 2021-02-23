@@ -2,10 +2,10 @@ v1:
   publisher:
     publisher-appoptics:
       all:
-        token: <%= @solarwinds_token %>
+        token: "<%= @solarwinds_token %>"
 
         ## URL to the AppOptics REST API endpoint for collecting measurements data
-        # url: APPOPTICS_URL
+        # url: "https://api.appoptics.com/v1/measurements"
 
         ## Set this option if you want a different "host" tag to be associated with the metrics you report.
         # hostname_alias: myhostname
@@ -18,7 +18,7 @@ v1:
         ## Enable support for SOCKS5 proxy. Only SOCKS5 proxies are supported at this time.
         # proxy_url: "socks5://<proxy-server-ip>:<port>"
         <%- if defined?(node['swisnap']['swisnap_proxy_url']) && ! node['swisnap']['swisnap_proxy_url'].empty? -%>
-		proxy_url: <%= node['swisnap']['swisnap_proxy_url'] %>
+        proxy_url: <%= node['swisnap']['swisnap_proxy_url'] %>
         <%- end -%>
 
         ## When proxy requires user authentication, uncomment the following lines and update username and password.
@@ -62,17 +62,17 @@ v2:
     publisher-appoptics:
       all:
         endpoint:
-          token: <%= @solarwinds_token %> 
+          token: "<%= @solarwinds_token %>"
 
           ## URL to the AppOptics REST API endpoint for collecting measurements data
-          # url: APPOPTICS_URL
+          # url: "https://api.appoptics.com/v1/measurements"
 
           ## Enable support for HTTP(S) proxy.
           # proxy_url: "http://<proxy-server-ip>:<port>"
           ## Enable support for SOCKS5 proxy. Only SOCKS5 proxies are supported at this time.
           # proxy_url: "socks5://<proxy-server-ip>:<port>"
           <%- if defined?(node['swisnap']['swisnap_proxy_url']) && ! node['swisnap']['swisnap_proxy_url'].empty? -%>
-		  proxy_url: <%= node['swisnap']['swisnap_proxy_url'] %>
+          proxy_url: <%= node['swisnap']['swisnap_proxy_url'] %>
           <%- end -%>
 
           ## When proxy requires user authentication, uncomment the following lines and update username and password.
