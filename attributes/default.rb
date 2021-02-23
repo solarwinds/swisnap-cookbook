@@ -78,3 +78,15 @@ else
   ## Path to SolarWinds Snap Agent's V2 tasks files.
   default['swisnap']['swisnap_tasks_autoload_path'] = '/opt/SolarWinds/Snap/etc/tasks-autoload.d'
 end
+
+## Publisher Appoptics config
+
+default['swisnap']['swisnap_hostname_alias'] = ""
+default['swisnap']['swisnap_proxy_url'] = ""
+default['swisnap']['swisnap_proxy_user'] = ""
+default['swisnap']['swisnap_proxy_url'] = "" 
+default['swisnap']['host_check_timeout'] = ""
+default['swisnap']['swisnap_floor_seconds'] = ""
+default['swisnap']['swisnap_period'] = ""
+default['swisnap']['swisnap_ec2_check_retries'] = ""
+default['swisnap']['swisnap_ec2_check_timeout'] = ""

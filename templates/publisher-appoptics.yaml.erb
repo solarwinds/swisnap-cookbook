@@ -1,0 +1,127 @@
+v1:
+  publisher:
+    publisher-appoptics:
+      all:
+        token: <%= @solarwinds_token %>
+
+        ## URL to the AppOptics REST API endpoint for collecting measurements data
+        # url: APPOPTICS_URL
+
+        ## Set this option if you want a different "host" tag to be associated with the metrics you report.
+        # hostname_alias: myhostname
+        <%- if defined?(node['swisnap']['swisnap_hostname_alias']) && ! node['swisnap']['swisnap_hostname_alias'].empty? -%>
+        hostname_alias: <%= node['swisnap']['swisnap_hostname_alias'] %>
+        <%- end -%>
+
+        ## Enable support for HTTP(S) proxy.
+        # proxy_url: "http://<proxy-server-ip>:<port>"
+        ## Enable support for SOCKS5 proxy. Only SOCKS5 proxies are supported at this time.
+        # proxy_url: "socks5://<proxy-server-ip>:<port>"
+        <%- if defined?(node['swisnap']['swisnap_proxy_url']) && ! node['swisnap']['swisnap_proxy_url'].empty? -%>
+		proxy_url: <%= node['swisnap']['swisnap_proxy_url'] %>
+        <%- end -%>
+
+        ## When proxy requires user authentication, uncomment the following lines and update username and password.
+        # proxy_user: <username>
+        # proxy_password: <password>
+        <%- if defined?(node['swisnap']['swisnap_proxy_user']) && ! node['swisnap']['swisnap_proxy_user'].empty? -%>
+        proxy_user: <%= node['swisnap']['swisnap_proxy_user'] %>
+        <%- end -%>
+        <%- if defined?(node['swisnap']['swisnap_proxy_password']) && ! node['swisnap']['swisnap_proxy_password'].empty? -%>
+        proxy_password: <%= node['swisnap']['swisnap_proxy_password'] %>
+        <%- end -%>
+
+        ## host_check_timeout allows to configure timeout for querying host operating system for identification informations,
+        ## like interfaces, CPUs, etc. By default it is set to 5s.
+        # host_check_timeout: "5s"
+        <%- if defined?(node['swisnap']['swisnap_host_check_timeout']) && ! node['swisnap']['swisnap_host_check_timeout'].empty? -%>
+        host_check_timeout: <%= node['swisnap']['swisnap_host_check_timeout'] %>
+        <%- end -%>
+
+        ## ec2_check_timeout allows to configure timeout for querying EC2 instance metadata URL to determine if host agent
+        ## is running on EC2 (or OpenStack) instance. By default it is set to 1s.
+        # ec2_check_timeout: "1s"
+        <%- if defined?(node['swisnap']['swisnap_ec2_check_timeout']) && ! node['swisnap']['swisnap_ec2_check_timeout'].empty? -%>
+        ec2_check_timeout: <%= node['swisnap']['swisnap_ec2_check_timeout'] %>
+        <%- end -%>
+
+        ## whether to floor timestamps to a specific interval, default value is 60 seconds.
+        # floor_seconds: 60
+        <%- if defined?(node['swisnap']['swisnap_floor_seconds']) && ! node['swisnap']['swisnap_floor_seconds'].empty? -%>
+        floor_seconds: <%= node['swisnap']['swisnap_floor_seconds'] %>
+        <%- end -%>
+
+        ## metrics interval period to report to AppOptics API, default value is 60 seconds.
+        # period: 60
+        <%- if defined?(node['swisnap']['swisnap_period']) && ! node['swisnap']['swisnap_period'].empty? -%>
+        period: <%= node['swisnap']['swisnap_period'] %>
+        <%- end -%>
+
+v2:
+  publisher:
+    publisher-appoptics:
+      all:
+        endpoint:
+          token: <%= @solarwinds_token %> 
+
+          ## URL to the AppOptics REST API endpoint for collecting measurements data
+          # url: APPOPTICS_URL
+
+          ## Enable support for HTTP(S) proxy.
+          # proxy_url: "http://<proxy-server-ip>:<port>"
+          ## Enable support for SOCKS5 proxy. Only SOCKS5 proxies are supported at this time.
+          # proxy_url: "socks5://<proxy-server-ip>:<port>"
+          <%- if defined?(node['swisnap']['swisnap_proxy_url']) && ! node['swisnap']['swisnap_proxy_url'].empty? -%>
+		  proxy_url: <%= node['swisnap']['swisnap_proxy_url'] %>
+          <%- end -%>
+
+          ## When proxy requires user authentication, uncomment the following lines and update username and password.
+          # proxy_user: <username>
+          # proxy_password: <password>
+          <%- if defined?(node['swisnap']['swisnap_proxy_user']) && ! node['swisnap']['swisnap_proxy_user'].empty? -%>
+          proxy_user: <%= node['swisnap']['swisnap_proxy_user'] %>
+          <%- end -%>
+          <%- if defined?(node['swisnap']['swisnap_proxy_password']) && ! node['swisnap']['swisnap_proxy_password'].empty? -%>
+          proxy_password: <%= node['swisnap']['swisnap_proxy_password'] %>
+          <%- end -%>
+
+        options:
+          ## Set this option if you want a different "host" tag to be associated with the metrics you report.
+          # hostname_alias: myhostname
+          <%- if defined?(node['swisnap']['swisnap_hostname_alias']) && ! node['swisnap']['swisnap_hostname_alias'].empty? -%>
+          hostname_alias: <%= node['swisnap']['swisnap_hostname_alias'] %>
+          <%- end -%>
+
+          ## whether to floor timestamps to a specific interval, default value is 60 seconds.
+          # floor_seconds: 60
+          <%- if defined?(node['swisnap']['swisnap_floor_seconds']) && ! node['swisnap']['swisnap_floor_seconds'].empty? -%>
+          floor_seconds: <%= node['swisnap']['swisnap_floor_seconds'] %>
+          <%- end -%>
+
+          ## metrics interval period to report to AppOptics API, default value is 60 seconds.
+          # period: 60
+          <%- if defined?(node['swisnap']['swisnap_period']) && ! node['swisnap']['swisnap_period'].empty? -%>
+          period: <%= node['swisnap']['swisnap_period'] %>
+          <%- end -%>
+
+          ## host_check_timeout allows to configure timeout for querying host operating system for identification informations,
+          ## like interfaces, CPUs, etc. By default it is set to 5s.
+          # host_check_timeout: "5s"
+          <%- if defined?(node['swisnap']['swisnap_host_check_timeout']) && ! node['swisnap']['swisnap_host_check_timeout'].empty? -%>
+          host_check_timeout: <%= node['swisnap']['swisnap_host_check_timeout'] %>
+          <%- end -%>
+
+          ec2:
+            ## check_timeout allows to configure timeout for querying EC2 instance metadata URL to determine if host agent
+            ## is running on EC2 (or OpenStack) instance. By default it is set to 1s.
+            # check_timeout: "1s"
+            <%- if defined?(node['swisnap']['swisnap_ec2_check_timeout']) && ! node['swisnap']['swisnap_ec2_check_timeout'].empty? -%>
+            ec2_check_timeout: <%= node['swisnap']['swisnap_ec2_check_timeout'] %>
+            <%- end -%>
+
+            ## check_retries allows to configure number of retries for querying EC2 instance metadata URL to determine if host agent
+            ## is running on EC2 (or OpenStack) instance. By default it is set to 3.
+            # check_retries: 3
+            <%- if defined?(node['swisnap']['swisnap_ec2_check_retries']) && ! node['swisnap']['swisnap_ec2_check_retries'].empty? -%>
+            ec2_check_retries: <%= node['swisnap']['swisnap_ec2_check_retries'] %>
+            <%- end -%>
