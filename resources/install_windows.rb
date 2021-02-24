@@ -18,11 +18,13 @@ action :install do
     
   template 'C:\ProgramData\SolarWinds\Snap\plugins.d\publisher-appoptics.yaml' do
     source 'publisher-appoptics.yaml.erb'
+    variables(solarwinds_token: new_resource.solarwinds_token)
     notifies :restart, 'service[swisnapd]', :delayed
   end
 
   template 'C:\ProgramData\SolarWinds\Snap\plugins.d\publisher-processes.yaml' do
     source 'publisher-processes.yaml.erb'
+    variables(solarwinds_token: new_resource.solarwinds_token)
     notifies :restart, 'service[swisnapd]', :delayed
   end
 
