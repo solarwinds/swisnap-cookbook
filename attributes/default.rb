@@ -78,3 +78,33 @@ else
   ## Path to SolarWinds Snap Agent's V2 tasks files.
   default['swisnap']['swisnap_tasks_autoload_path'] = '/opt/SolarWinds/Snap/etc/tasks-autoload.d'
 end
+
+## Publisher Appoptics and Processes releated attributes
+
+## Hostname alias for the server which will be used in AppOptics UI.
+default['swisnap']['swisnap_hostname_alias'] = ""
+
+## Optional proxy settings.
+default['swisnap']['swisnap_proxy_url'] = ""
+default['swisnap']['swisnap_proxy_user'] = ""
+default['swisnap']['swisnap_proxy_password'] = "" 
+
+## swisnap_host_check_timeout allows to configure timeout for querying host operating system for identification informations.
+## Default value is set to 5s.
+default['swisnap']['swisnap_host_check_timeout'] = ""
+
+## Whether to floor timestamps to a specific interval, default value is 60 seconds.
+default['swisnap']['swisnap_floor_seconds'] = ""
+
+## Metrics interval period to report to AppOptics API, default value is 60 seconds.
+default['swisnap']['swisnap_period'] = ""
+
+## swisnap_ec2_check_timeout allows to configure timeout for querying
+## EC2 instance metadata URL to determine if host agent is running on EC2 (or OpenStack) instance.
+## By default it is set to 1s.
+default['swisnap']['swisnap_ec2_check_timeout'] = ""
+
+## swisnap_ec2_check_retries allows to configure number of retries for querying
+## EC2 instance metadata URL to determine if host agent is running on EC2 (or OpenStack) instance.
+## By default it is set to 3.
+default['swisnap']['swisnap_ec2_check_retries'] = ""

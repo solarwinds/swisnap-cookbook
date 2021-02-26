@@ -7,7 +7,7 @@ Chef recipes and resources for SolarWinds Snap Agent Linux and Windows installat
 
 ## Usage
 
-* As these recipes are not yet published to Chef Supermarket, clone this repoitory in to `swisnap` directory.
+* As these recipes are not yet published to Chef Supermarket, clone this repository in to `swisnap` directory.
 ```
 git clone git@github.com:librato/swisnap-cookbook.git swisnap
 ```
@@ -97,3 +97,41 @@ Path to SolarWinds Snap Agent's V2 tasks files.
 ['swisnap']['swisnap_task_path']
 ```
 Path to SolarWinds Snap Agent's V1 tasks files.
+
+*Below attributes are releated to Publishers plugins configuration*
+
+```
+['swisnap']['swisnap_hostname_alias']
+```
+Hostname alias for the server which will be used in AppOptics UI.
+
+```
+['swisnap']['swisnap_proxy_url']
+['swisnap']['swisnap_proxy_user']
+['swisnap']['swisnap_proxy_password']
+```
+Optional proxy settings.
+
+```
+default['swisnap']['swisnap_host_check_timeout']
+```
+swisnap_host_check_timeout allows to configure timeout for querying host operating system for identification informations. Default value is set to 5s.
+
+```
+['swisnap']['swisnap_floor_seconds']
+```
+Whether to floor timestamps to a specific interval, default value is 60 seconds.
+
+```
+['swisnap']['swisnap_period']
+```
+Metrics interval period to report to AppOptics API, default value is 60 seconds.
+```
+['swisnap']['swisnap_ec2_check_timeout']
+```
+swisnap_ec2_check_timeout allows to configure timeout for querying EC2 instance metadata URL to determine if host agent is running on EC2 (or OpenStack) instance. By default it is set to 1s.
+
+```
+['swisnap']['swisnap_ec2_check_retries']
+```
+swisnap_ec2_check_retries allows to configure number of retries for querying EC2 instance metadata URL to determine if host agent is running on EC2 (or OpenStack) instance. By default it is set to 3.
