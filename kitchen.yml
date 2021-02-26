@@ -18,6 +18,17 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro # required by systemd
 
+
+- name: ubuntu-16.04
+  driver:
+    image: dokken/ubuntu-16.04
+    privileged: true
+    pid_one_command: /bin/systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro # required by systemd
+
+
+
 suites:
   - name: default
     run_list:
