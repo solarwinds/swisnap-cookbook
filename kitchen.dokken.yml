@@ -16,9 +16,32 @@ platforms:
     privileged: true
     pid_one_command: /usr/lib/systemd/systemd
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro # required by systemd
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
 
+- name: debian-8
+  driver:
+    image: dokken/debian-8
+    privileged: true
+    pid_one_command: /bin/systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
 
+- name: debian-9
+  driver:
+    image: dokken/debian-9
+    privileged: true
+    pid_one_command: /bin/systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+
+- name: debian-10
+  driver:
+    image: dokken/debian-10
+    privileged: true
+    pid_one_command: /bin/systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+      
 
 - name: ubuntu-16.04
   driver:
@@ -26,8 +49,7 @@ platforms:
     privileged: true
     pid_one_command: /bin/systemd
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro # required by systemd
-
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
 
 - name: ubuntu-18.04
   driver:
@@ -35,8 +57,7 @@ platforms:
     privileged: true
     pid_one_command: /bin/systemd
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro # required by systemd
-      
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
 
 - name: ubuntu-20.04
   driver:
@@ -44,8 +65,7 @@ platforms:
     privileged: true
     pid_one_command: /bin/systemd
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro # required by systemd
-
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
 
 suites:
   - name: default
