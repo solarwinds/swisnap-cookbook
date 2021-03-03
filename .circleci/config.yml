@@ -1,0 +1,29 @@
+version: 2.1
+
+
+executors:
+	kitchen:
+
+
+  
+
+jobs:
+  dokken-single:
+    executor: kitchen 
+    parameters:
+      suite:
+        description: Test Kitchen suite name
+        type: string
+      channel:
+        description: ChefDK channel stable or current
+        type: string
+        default: current
+    environment:
+      KITCHEN_LOCAL_YAML: kitchen.dokken.yml
+      CHEF_LICENSE: "accept-no-persist"
+    steps:
+      - checkout
+      - install_chef:
+          channel: <<parameters.channel>>
+      - run:
+          command: CHEF_LICENSE="accept-no-persist" kitchen test <<parameters.suite>>
