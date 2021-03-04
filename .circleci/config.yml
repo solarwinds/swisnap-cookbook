@@ -1,29 +1,28 @@
+---
 version: 2.1
+commands:
+  run_tests:
+    description: "Run Kitchen tests"
+    steps:
+      - checkout
+      - run
+        name: "Install Chef"
+        command: 
 
-
-executors:
-	kitchen:
-
-
-  
+      - run:
+        name: "Run tests"
+        command: kitchen test XXXX
 
 jobs:
-  dokken-single:
-    executor: kitchen 
-    parameters:
-      suite:
-        description: Test Kitchen suite name
-        type: string
-      channel:
-        description: ChefDK channel stable or current
-        type: string
-        default: current
+  debian8:
     environment:
       KITCHEN_LOCAL_YAML: kitchen.dokken.yml
       CHEF_LICENSE: "accept-no-persist"
     steps:
-      - checkout
-      - install_chef:
-          channel: <<parameters.channel>>
-      - run:
-          command: CHEF_LICENSE="accept-no-persist" kitchen test <<parameters.suite>>
+      - run_tests
+
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - debian-8
