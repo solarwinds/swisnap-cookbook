@@ -1,18 +1,5 @@
 ---
 version: 2.1
-commands:
-  run_tests:
-    description: "Run Kitchen tests"
-    steps:
-      - checkout
-
-      - run:
-          name: "Install Chef"
-          command: sudo bash -c "$(curl -sSL https://www.chef.io/chef/install.sh)" -s -P chefdk
-
-      - run:
-          name: ubuntu-1804
-          command: export KITCHEN_LOCAL_YAML=kitchen.dokken.yml; export CHEF_LICENSE="accept-no-persist"; kitchen test ubuntu-1804
 
 jobs:
   test-kitchen:
@@ -22,7 +9,15 @@ jobs:
       KITCHEN_LOCAL_YAML: kitchen.dokken.yml
       CHEF_LICENSE: "accept-no-persist"
     steps:
-      - run_tests
+      - checkout
+
+      - run:
+          name: "Install Chef"
+          command: sudo bash -c "$(curl -sSL https://www.chef.io/chef/install.sh)" -s -P chefdk
+
+      - run:
+          name: ubuntu-1804
+          command: kitchen test ubuntu-1804
 
 workflows:
   version: 2.1
