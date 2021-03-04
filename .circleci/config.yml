@@ -5,18 +5,19 @@ commands:
     description: "Run Kitchen tests"
     steps:
       - checkout
+
       - run:
-        name: "Install Chef"
-        command: curl -L https://www.chef.io/chef/install.sh | bash 
+          name: "Install Chef"
+          command: curl -L https://www.chef.io/chef/install.sh | bash
+
       - run:
-        name: ubuntu-1804
-        command: kitchen test ubuntu-1804
+          name: ubuntu-1804
+          command: kitchen test ubuntu-1804
 
 jobs:
   test-kitchen:
     machine:
-      services:
-        - docker
+      image: ubuntu-2004:202010-01
     environment:
       KITCHEN_LOCAL_YAML: kitchen.dokken.yml
       CHEF_LICENSE: "accept-no-persist"
@@ -27,4 +28,4 @@ workflows:
   version: 2.1
   build_and_test:
     jobs:
-      - debian-8
+      - test-kitchen 
