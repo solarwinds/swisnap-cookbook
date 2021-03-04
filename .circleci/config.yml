@@ -18,9 +18,12 @@ commands:
           command: kitchen test debian-9
       - run:
           name: debian-10
-          command: kitchen test debina-10
+          command: kitchen test debian-10
       - run:
           name: ubuntu-1604
+          command: kitchen test ubuntu-1604
+      - run:
+          name: ubuntu-1804
           command: kitchen test ubuntu-1804
       - run:
           name: ubuntu-2004
@@ -43,4 +46,4 @@ workflows:
   version: 2.1
   build_and_test:
     jobs:
-      - test-kitchen 
+      - test-kitchen
