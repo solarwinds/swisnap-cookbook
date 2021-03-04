@@ -12,7 +12,7 @@ commands:
 
       - run:
           name: ubuntu-1804
-          command: kitchen test ubuntu-1804
+          command: KITCHEN_LOCAL_YAML=kitchen.dokken.yml CHEF_LICENSE="accept-no-persist" kitchen test ubuntu-1804
 
 jobs:
   test-kitchen:
