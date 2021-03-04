@@ -1,4 +1,6 @@
 # Solarwinds Snap Agent Chef recipes
+[![CircleCI](https://circleci.com/gh/solarwinds/swisnap-cookbook.svg?style=shield)](https://circleci.com/gh/solarwinds/swisnap-cookbook)
+
 Chef recipes and resources for SolarWinds Snap Agent Linux and Windows installation.
 
 ## Table of contents

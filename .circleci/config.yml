@@ -1,13 +1,8 @@
 ---
 version: 2.1
-
-jobs:
-  test-kitchen:
-    machine:
-      image: ubuntu-2004:202010-01
-    environment:
-      KITCHEN_LOCAL_YAML: kitchen.dokken.yml
-      CHEF_LICENSE: "accept-no-persist"
+commands:
+  run_tests:
+    description: "Run Kitchen tests"
     steps:
       - checkout
 
@@ -18,6 +13,16 @@ jobs:
       - run:
           name: ubuntu-1804
           command: kitchen test ubuntu-1804
+
+jobs:
+  test-kitchen:
+    machine:
+      image: ubuntu-2004:202010-01
+    environment:
+      KITCHEN_YAML: kitchen.dokken.yml
+      CHEF_LICENSE: "accept-no-persist"
+    steps:
+      - run_tests
 
 workflows:
   version: 2.1
