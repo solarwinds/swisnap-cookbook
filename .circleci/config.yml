@@ -8,7 +8,7 @@ commands:
 
       - run:
           name: "Install Chef"
-          command: curl -L https://www.chef.io/chef/install.sh | bash
+          command: curl -L https://www.chef.io/chef/install.sh | sudo bash
 
       - run:
           name: ubuntu-1804
