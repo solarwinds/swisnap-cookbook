@@ -16,7 +16,7 @@ git clone git@github.com:librato/swisnap-cookbook.git swisnap
 
 * Download recipe dependencies (SolarWinds Snap Agent has dependency to PackageCloud Chef recipes).
 
-* Update SOLARWINDS_TOKEN, with your App-Opptics API token in [recipes/default.rb](recipes/default.rb).
+* Change attribute `['swisnap']['solarwinds_token']` from `SOLARWINDS_TOKEN`, to your AppOptics API token in [attributes/default.rb](attributes/default.rb).
 
 * Send to Chef Server up-to-date version of recipes and its dependencies.
 ```

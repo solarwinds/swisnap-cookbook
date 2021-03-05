@@ -73,6 +73,7 @@ suites:
     attributes:
       swisnap:
        swisnap_hostname_alias: test-kitchen
+       solarwinds_token: testKitchenToken
        swisnap_global_tags:
          test-tags: test-kitchen
 

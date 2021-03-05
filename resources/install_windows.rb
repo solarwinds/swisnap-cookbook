@@ -12,17 +12,20 @@ action :install do
   end
 
   template 'C:\ProgramData\SolarWinds\Snap\config.yaml' do
+    sensitive true
     source 'config.yaml.erb'
     notifies :restart, 'service[swisnapd]', :delayed
   end
     
   template 'C:\ProgramData\SolarWinds\Snap\plugins.d\publisher-appoptics.yaml' do
+    sensitive true
     source 'publisher-appoptics.yaml.erb'
     variables(solarwinds_token: new_resource.solarwinds_token)
     notifies :restart, 'service[swisnapd]', :delayed
   end
 
   template 'C:\ProgramData\SolarWinds\Snap\plugins.d\publisher-processes.yaml' do
+    sensitive true
     source 'publisher-processes.yaml.erb'
     variables(solarwinds_token: new_resource.solarwinds_token)
     notifies :restart, 'service[swisnapd]', :delayed
@@ -31,5 +34,4 @@ action :install do
   service 'swisnapd' do
     action :enable
   end
-
 end
