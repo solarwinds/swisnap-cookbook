@@ -1,5 +1,5 @@
 resource_name :swisnap_install_linux
-property :solarwinds_token, String, required: true
+property :solarwinds_token, String, required: true, sensitive: true
 
 action :install do
   node.run_state['package_type'] = if %w(ubuntu debian).include? node['platform']
@@ -18,6 +18,7 @@ action :install do
   end
 
   template '/opt/SolarWinds/Snap/etc/config.yaml' do
+    sensitive true
     source 'config.yaml.erb'
     owner 'solarwinds'
     group 'solarwinds'
@@ -26,6 +27,7 @@ action :install do
   end
   
   template '/opt/SolarWinds/Snap/etc/plugins.d/publisher-appoptics.yaml' do
+    sensitive true
     source 'publisher-appoptics.yaml.erb'
     owner 'solarwinds'
     group 'solarwinds'
@@ -35,6 +37,7 @@ action :install do
   end
 
   template '/opt/SolarWinds/Snap/etc/plugins.d/publisher-processes.yaml' do
+    sensitive true
     source 'publisher-processes.yaml.erb'
     owner 'solarwinds'
     group 'solarwinds'

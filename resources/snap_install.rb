@@ -1,6 +1,6 @@
 resource_name :swisnap_install
 provides :swisnap_install
-property :solarwinds_token, String, required: true
+property :solarwinds_token, String, required: true, sensitive: true
 
 action :install do
   if node['os'] == 'windows'

@@ -1,3 +1,7 @@
+## SolarWinds Token that will be passed to SolarWinds Snap Agent
+default['swisnap']['solarwinds_token'] = 'SOLARWINDS_TOKEN'
+
+## SolarWinds Snap Agent name
 default['swisnap']['swisnap_package_name'] = 'solarwinds-snap-agent'
 
 ## Logging level and log format. Default value is warning and text.

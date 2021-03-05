@@ -1,0 +1,49 @@
+---
+version: 2.1
+commands:
+  run_tests:
+    description: "Run Kitchen tests"
+    steps:
+      - checkout
+
+      - run:
+          name: "Install Chef"
+          command: sudo bash -c "$(curl -sSL https://www.chef.io/chef/install.sh)" -s -P chefdk
+
+      - run:
+          name: debian-8 
+          command: kitchen test debian-8
+      - run:
+          name: debian-9
+          command: kitchen test debian-9
+      - run:
+          name: debian-10
+          command: kitchen test debian-10
+      - run:
+          name: ubuntu-1604
+          command: kitchen test ubuntu-1604
+      - run:
+          name: ubuntu-1804
+          command: kitchen test ubuntu-1804
+      - run:
+          name: ubuntu-2004
+          command: kitchen test ubuntu-2004
+      - run:
+          name: centos-7
+          command: kitchen test centos-7
+
+jobs:
+  test-kitchen:
+    machine:
+      image: ubuntu-2004:202010-01
+    environment:
+      KITCHEN_YAML: kitchen.dokken.yml
+      CHEF_LICENSE: "accept-no-persist"
+    steps:
+      - run_tests
+
+workflows:
+  version: 2.1
+  build_and_test:
+    jobs:
+      - test-kitchen
