@@ -1,4 +1,4 @@
-# Solarwinds Snap Agent Chef recipes
+# SolarWinds Snap Agent Chef recipes
 [![CircleCI](https://circleci.com/gh/solarwinds/swisnap-cookbook.svg?style=shield)](https://circleci.com/gh/solarwinds/swisnap-cookbook)
 
 Chef recipes and resources for SolarWinds Snap Agent Linux and Windows installation.
@@ -9,21 +9,35 @@ Chef recipes and resources for SolarWinds Snap Agent Linux and Windows installat
 
 ## Usage
 
-* As these recipes are not yet published to Chef Supermarket, clone this repository in to `swisnap` directory.
-```
-git clone git@github.com:librato/swisnap-cookbook.git swisnap
-```
+* Download `swisnap` recipes to your Chef server.
 
+Using Berkshelf:
+
+```
+# add to Berksfile
+cookbook 'swisnap'
+```
+Or using Knife tool:
+
+```
+knife cookbook site install swisnap
+```
 * Download recipe dependencies (SolarWinds Snap Agent has dependency to PackageCloud Chef recipes).
 
 * Change attribute `['swisnap']['solarwinds_token']` from `SOLARWINDS_TOKEN`, to your AppOptics API token in [attributes/default.rb](attributes/default.rb).
 
 * Send to Chef Server up-to-date version of recipes and its dependencies.
+
+```
+berks upload swisnap
+```
+
 ```
 knife cookbook upload swisnap --include-dependencies
 ```
 
-* Add to run list for desired nodes:
+* Add `swisnap::default` recipe to run list of desired nodes, which shall be monitored:
+
 ```
 recipe[swisnap::default]
 ```
@@ -39,6 +53,7 @@ recipe[swisnap::default]
 ['swisnap']['swisnap_log_format']
 ```
 Logging level and log format. Default value is `warning` and `text`.
+
 ```
 ['swisnap']['swisnap_plugin_trust_level']
 ['swisnap']['swisnap_keyring_paths']
@@ -53,14 +68,17 @@ Plugin trust level for swisnapd. When enabled, only signed plugins that can be v
 ['swisnap']['swisnap_ca_cert_paths']
 ```
 Secure plugin communication optional parameters.
+
 ```
 ['swisnap']['swisnap_plugin_load_timeout']
 ```
 The maximal time allowed for a plugin to load. Default value is 30.
+
 ```
 ['swisnap']['swisnap_global_tags']
 ```
 Tags that will be applied to collected metrics across all tasks. They should be set as Hash (key => value) format.
+
 ```
 ['swisnap']['swisnap_restapi_enable']
 ['swisnap']['swisnap_restapi_rest_auth']
@@ -79,22 +97,27 @@ Optional REST API parameters. By default REST API is enabled.
 ['swisnap']['swisnap_auto_discover_path']
 ```
 Path to SolarWinds Snap Agent's autoload directory for V1 plugins.
+
 ```
 ['swisnap']['swisnap_log_path']
 ```
 Path to log file for Snap.
+
 ```
 ['swisnap']['swisnap_plugin_config_dir']
 ```
 Path to SolarWinds Snap Agent's plugin configuration files.
+
 ```
 ['swisnap']['swisnap_plugin_path']
 ```
 Path where SolarWinds Snap Agent's plugins binaries are stored.
+
 ```
 ['swisnap']['swisnap_tasks_autoload_path']
 ```
 Path to SolarWinds Snap Agent's V2 tasks files.
+
 ```
 ['swisnap']['swisnap_task_path']
 ```
@@ -128,6 +151,7 @@ Whether to floor timestamps to a specific interval, default value is 60 seconds.
 ['swisnap']['swisnap_period']
 ```
 Metrics interval period to report to AppOptics API, default value is 60 seconds.
+
 ```
 ['swisnap']['swisnap_ec2_check_timeout']
 ```
